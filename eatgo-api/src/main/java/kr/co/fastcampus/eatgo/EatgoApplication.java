@@ -10,4 +10,4 @@ public class EatgoApplication {
 		SpringApplication.run(EatgoApplication.class, args);
 	}
 
-}
+} // test
