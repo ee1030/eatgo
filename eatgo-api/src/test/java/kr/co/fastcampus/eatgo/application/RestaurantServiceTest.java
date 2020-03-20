@@ -4,7 +4,6 @@ import kr.co.fastcampus.eatgo.domain.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
@@ -13,6 +12,7 @@ import java.util.List;
 import static org.hamcrest.core.Is.is;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 
 class RestaurantServiceTest {
@@ -71,4 +71,15 @@ class RestaurantServiceTest {
 
     }
 
+    @Test
+    public void addRestaurant() {
+        Restaurant restaurant = new Restaurant("BeRyong", "Busan");
+        Restaurant saved = new Restaurant(1234L, "BeRyong", "Busan");
+
+        given(restaurantRepository.save(any())).willReturn(saved);
+
+        Restaurant created = restaurantService.addRestaurant(restaurant);
+
+        assertThat(created.getId(), is(1234L));
+    }
 }
