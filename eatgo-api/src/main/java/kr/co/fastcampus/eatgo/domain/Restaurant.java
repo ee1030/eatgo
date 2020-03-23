@@ -28,7 +28,7 @@ public class Restaurant {
 //    private String regionName;
 //    private String categoryName;
 //    private String tagName;
-
+//
     @Transient
     private List<MenuItem> menuItems;
 
