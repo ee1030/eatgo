@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan({"kr.co.fastcampus.eatgo.*"})
 public class EatgoApplication {
 
 	public static void main(String[] args) {
