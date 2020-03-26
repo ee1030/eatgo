@@ -37,6 +37,7 @@ public class RestaurantControllerTest {
         List<Restaurant> restaurants = new ArrayList<>();
         restaurants.add(Restaurant.builder()
                 .id(1004L)
+                .categoryId(1L)
                 .name("Joker House")
                 .address("Seoul")
                 .build());
@@ -57,6 +58,7 @@ public class RestaurantControllerTest {
     public void detailWithExisted() throws Exception {
         Restaurant restaurant = Restaurant.builder()
                 .id(1004L)
+                .categoryId(1L)
                 .name("Joker House")
                 .address("Seoul")
                 .build();
@@ -92,6 +94,7 @@ public class RestaurantControllerTest {
             Restaurant restaurant = invocation.getArgument(0);
             return Restaurant.builder()
                     .id(1234L)
+                    .categoryId(1L)
                     .name(restaurant.getName())
                     .address(restaurant.getAddress())
                     .build();
@@ -99,7 +102,7 @@ public class RestaurantControllerTest {
 
         mvc.perform(post("/restaurants")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"name\" : \"BeRyong\", \"address\" : \"Busan\"}"))
+                .content("{\"categoryId\":1,\"name\" : \"BeRyong\", \"address\" : \"Busan\"}"))
                 .andExpect(status().isCreated())
                 .andExpect(header().string("location", "/restaurants/1234"))
                 .andExpect((content().string("{}")));
@@ -113,6 +116,7 @@ public class RestaurantControllerTest {
             Restaurant restaurant = invocation.getArgument(0);
             return Restaurant.builder()
                     .id(1234L)
+                    .categoryId(1L)
                     .name(restaurant.getName())
                     .address(restaurant.getAddress())
                     .build();
@@ -120,7 +124,7 @@ public class RestaurantControllerTest {
 
         mvc.perform(post("/restaurants")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"name\" : \"\", \"address\" : \"\"}"))
+                .content("{\"categoryId\":1,\"name\" : \"\", \"address\" : \"\"}"))
                 .andExpect(status().isBadRequest());
     }
 
@@ -128,7 +132,7 @@ public class RestaurantControllerTest {
     public void updateWithValidData() throws Exception {
         mvc.perform(patch("/restaurants/1004")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"name\" : \"JOKER Bar\", \"address\" : \"Busan\"}"))
+                .content("{\"categoryId\":1,\"name\" : \"JOKER Bar\", \"address\" : \"Busan\"}"))
                 .andExpect(status().isOk());
 
         verify(restaurantService).updateRestaurant(1004L, "JOKER Bar", "Busan");
@@ -138,7 +142,7 @@ public class RestaurantControllerTest {
     public void updateWithInvalidData() throws Exception {
         mvc.perform(patch("/restaurants/1004")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"name\" : \"\", \"address\" : \"\"}"))
+                .content("{\"categoryId\":1,\"name\" : \"\", \"address\" : \"\"}"))
                 .andExpect(status().isBadRequest());
     }
 }
