@@ -4,6 +4,7 @@ package kr.co.fastcampus.eatgo.interfaces;
 import kr.co.fastcampus.eatgo.application.EmailNotExistedException;
 import kr.co.fastcampus.eatgo.application.PasswordWrongException;
 import kr.co.fastcampus.eatgo.application.UserService;
+import kr.co.fastcampus.eatgo.domain.User;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
@@ -31,15 +33,21 @@ public class SessionControllerTest {
 
     @Test
     public void createWithValidAttributes() throws Exception {
+        String email = "tester@example.com";
+        String password = "test";
+
+        User mockUser = User.builder().password("ACCESSTOKEN").build();
+
+        given(userService.authenticate(email, password)).willReturn(mockUser);
 
         mvc.perform(post("/session")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"email\":\"tester@example.com\",\"password\":\"test\"}"))
                 .andExpect(status().isCreated())
                 .andExpect(header().string("location", "/session"))
-                .andExpect(content().string("{\"accessToken\":\"ACCESSTOKEN\"}"));
+                .andExpect(content().string("{\"accessToken\":\"ACCESSTOKE\"}"));
 
-        verify(userService).authenticate(eq("tester@example.com"), eq("test"));
+        verify(userService).authenticate(eq(email), eq(password));
     }
 
     @Test
