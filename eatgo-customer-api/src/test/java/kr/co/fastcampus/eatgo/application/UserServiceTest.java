@@ -87,7 +87,7 @@ class UserServiceTest {
         given(userRepository.findByEmail(email))
                 .willReturn(Optional.empty());
 
-        Assertions.assertThrows(EmailExistedException.class, () -> {
+        Assertions.assertThrows(EmailNotExistedException.class, () -> {
             userService.authenticate(email, password);
         });
     }
