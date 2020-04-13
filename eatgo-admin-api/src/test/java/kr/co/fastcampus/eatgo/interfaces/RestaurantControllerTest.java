@@ -12,7 +12,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.Matchers.containsString;
@@ -25,6 +24,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(RestaurantController.class)
 public class RestaurantControllerTest {
+
+//    MockMvc를 이용하여 테스트 케이스 작성 given 과 perform, verify를 이용하여 검증한다.
 
     @Autowired
     private MockMvc mvc;

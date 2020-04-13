@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.servlet.Filter;
 
+// 보안 설정 클래스, jwt와 스프링 프레임워크의 security 패키지들을 이용하여 설정을 잡는다.
 @Configuration
 @EnableWebSecurity
 public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {

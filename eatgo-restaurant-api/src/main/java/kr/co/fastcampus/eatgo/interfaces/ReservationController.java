@@ -27,5 +27,5 @@ public class ReservationController {
                 reservationService.getReservations(restaurantId);
 
         return reservations;
-    }
+    } // 레스토랑 소유자인 사용자가 자신의 가게에 등록된 예약 목록을 조회하는 기능
 }

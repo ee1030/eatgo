@@ -29,7 +29,7 @@ public class UserService {
 
         if (existed.isPresent()) {
             throw new EmailExistedException(email);
-        }
+        } // 이미 존재하는 이메일일 경우 예외 처리한다.
 
         String encodedPassword = passwordEncoder.encode(password);
 
@@ -43,4 +43,6 @@ public class UserService {
 
         return userRepository.save(user);
     }
+    /* 유저 등록, 기본적으론 이용자 등급인 Level 1로 설정하고 password는 PasswordEncoder의 BCryptPasswordEncoder를
+    이용하여 암호화 하여 전송하도록 한다.*/
 }

@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+// restaurant 객체 @Entity 어노테이션을 이용하여 JPA가 관리하게끔 만들고 restaurant 객체에 필요한 멤버들을 정의한다.
 @Entity
 @Getter
 @NoArgsConstructor
@@ -19,6 +20,7 @@ import java.util.List;
 @Builder
 public class Restaurant {
 
+    // @Id 어노테이션으로 PK를 성정하고 @GeneratedValue 어노테이션을 이용하여 값을 자동으로 채우도록 한다.
     @Id
     @GeneratedValue
     @Setter
@@ -32,6 +34,7 @@ public class Restaurant {
     @NotEmpty
     private String address;
 
+    // JsonInclude 어노테이션을 이용하여 menuItem이나 Review가 null값일 경우 제외하고 표시하도록 한다.
     @Transient
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<MenuItem> menuItems;

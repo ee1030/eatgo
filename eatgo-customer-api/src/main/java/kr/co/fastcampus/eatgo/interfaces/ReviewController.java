@@ -39,6 +39,6 @@ public class ReviewController {
                 "/reviews/" + review.getId();
         return ResponseEntity.created(new URI(url))
                 .body("{}");
-    }
+    } // Authentication 를 이용하여 사용자의 유효성 검사를 실시한 후 통과 되었을 경우에만 리뷰를 작설하도록 한다.
 
 }

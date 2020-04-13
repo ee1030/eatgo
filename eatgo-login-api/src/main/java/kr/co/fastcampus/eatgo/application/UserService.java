@@ -7,7 +7,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -33,5 +32,5 @@ public class UserService {
         };
 
         return user;
-    }
+    } // 인증과정 이메일과 패스워드를 확인하고 예외 처리를 한다.
 }

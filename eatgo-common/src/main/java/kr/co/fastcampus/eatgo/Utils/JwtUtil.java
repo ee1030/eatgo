@@ -27,7 +27,7 @@ public class JwtUtil {
         return builder
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
-    }
+    } // Jwt를 이용하여 액세스 토큰을 생성한다.
 
 
     public Claims getClaims(String token) {

@@ -43,4 +43,6 @@ public class ReservationController {
                 "/reservations/" + reservation.getId();
         return ResponseEntity.created(new URI(url)).body("{}");
     }
+    /* 사용자의 정보를 입력받고 reservation 객체를 생성하여 예약을 하게 되는 기능. 유저 아이디와 name은 액세스 토큰에 포함되어 있는
+    정보를 가져와 입력 받도록 한다. */
 }

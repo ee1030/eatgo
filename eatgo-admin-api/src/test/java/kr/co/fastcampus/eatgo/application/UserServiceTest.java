@@ -27,7 +27,6 @@ class UserServiceTest {
 
     @BeforeEach
     public void setUp() {
-
         MockitoAnnotations.initMocks(this);
         userService = new UserService(userRepository);
     }

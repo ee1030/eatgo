@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+// Filter 를 이용하여 사용자가 보낸 아이디와 패스워드를 인터셉트 하여 유효성 검사를 실시한다.
 public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
 
     private JwtUtil jwtUtil;
